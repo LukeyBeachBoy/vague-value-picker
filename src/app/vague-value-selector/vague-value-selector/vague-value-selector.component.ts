@@ -42,9 +42,11 @@ export class VagueValueSelectorComponent implements OnInit {
    */
   select(optionLabel: HTMLElement) {
     const index = optionLabel.id.replace('option', '');
-    const value = (document.getElementById(`value${index}`) as HTMLInputElement)
-      .value;
-    this.selectedOption = { index, value };
+    const button = document.getElementById(`value${index}`) as HTMLInputElement;
+
+    button.checked = true;
+
+    this.selectedOption = { index, value: button.value };
     this.moveIndicator(optionLabel, index, true);
     this.valueSelected.emit(this.selectedOption.value);
   }
@@ -53,12 +55,17 @@ export class VagueValueSelectorComponent implements OnInit {
    *
    * @param optionLabel The label to get the offsetLeft value from
    * @param value The contents of the label
-   * @param selected Whether the user has selected
+   * @param selected Whether the user is selecting or hovering
    */
   moveIndicator(optionLabel: HTMLElement, choiceIndex, selected?) {
     const indicator: HTMLElement = this.indicatorRef.nativeElement;
-    indicator.style.left = `${optionLabel.offsetLeft - 10}px`;
-    indicator.style.opacity = selected ? '1' : '0.5';
+    indicator.style.left = `${optionLabel.offsetLeft - 16}px`;
+    indicator.style.opacity =
+      selected ||
+      (this.selectedOption &&
+        this.selectedOption.index === choiceIndex.toString())
+        ? '1'
+        : '0.5';
     /* Chosen final option - round the right corners */
     if (parseInt(choiceIndex, 10) === this.options.length - 1) {
       indicator.style.borderRadius = '0 5px 5px 0';

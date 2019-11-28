@@ -20,7 +20,9 @@ $white: #ffffff;
     width: 50%;
     position: relative;
     z-index: 2;
-    line-height: 40px;
+    transition: all 200ms ease-in-out;
+    line-height: 1.7rem;
+    margin: 0.4rem;
     cursor: pointer;
     color: darken($switchbg, 15%);
   }
@@ -28,6 +30,8 @@ $white: #ffffff;
     display: none;
     &:checked + label {
       color: $background;
+      background-color: white;
+      border-radius: 5px;
       font-weight: bold;
     }
   }
