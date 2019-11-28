@@ -1,0 +1,48 @@
+$background: #141241;
+$switchbg: #1ab587;
+$gradient: linear-gradient(180deg, #1ac39f 0, #1ac39fc7 99%);
+$white: #ffffff;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+.switch {
+  background: $gradient;
+  width: 80%;
+  display: inline-flex;
+  justify-content: space-evenly;
+  border-radius: 8px;
+  height: 40px;
+  padding: 5px;
+  position: relative;
+  label {
+    text-align: center;
+    font-family: 'Open sans', sans-serif;
+    float: left;
+    width: 50%;
+    position: relative;
+    z-index: 2;
+    line-height: 40px;
+    cursor: pointer;
+    color: darken($switchbg, 15%);
+  }
+  input[type='radio'] {
+    display: none;
+    &:checked + label {
+      color: $background;
+      font-weight: bold;
+    }
+  }
+  span {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    margin: 9px;
+    border-radius: 5px 0 0 5px;
+    background-color: $white;
+    transition: all 200ms ease-in-out;
+    &.inactive {
+      opacity: 0.5;
+    }
+  }
+}

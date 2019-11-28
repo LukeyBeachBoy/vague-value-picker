@@ -1,0 +1,9 @@
+<div class="switch" (mouseleave)="resetIndicatorToSelection()">
+  <ng-container *ngFor="let option of options; let i = index;">
+    <input name="radio" type="radio" [value]="option" id="value{{i}}">
+    <label #label id="option{{i}}" [for]="option" (click)="select(label)"
+      (mouseenter)="moveIndicator(label, i)">{{option}}</label>
+  </ng-container>
+  <span #indicator id="indicator" aria-hidden="true" [ngStyle]="{'width': indicatorWidth}"
+    [ngClass]="{inactive: !value}"></span>
+</div>
