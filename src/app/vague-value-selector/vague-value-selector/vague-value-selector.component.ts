@@ -4,9 +4,9 @@ import {
   Input,
   ViewChild,
   ElementRef,
-  Output
+  Output,
+  EventEmitter
 } from '@angular/core';
-import { EventEmitter } from 'events';
 @Component({
   selector: 'app-vague-value-selector',
   templateUrl: './vague-value-selector.component.html',
