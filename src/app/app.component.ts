@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'VagueValueSelector';
+
+  onSelect(val) {
+    console.log(val);
+  }
 }
+
+

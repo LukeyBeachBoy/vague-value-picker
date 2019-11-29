@@ -1,1 +1,5 @@
-<app-vague-value-selector [min]="1" [max]="5" [steps]="1"></app-vague-value-selector>
+<div>
+  <app-vague-value-selector #selector (valueSelected)="onSelect($event)" [min]="1" max="15" [steps]="1">
+  </app-vague-value-selector>
+  <h1>{{selector.selection?.value}}</h1>
+</div>
